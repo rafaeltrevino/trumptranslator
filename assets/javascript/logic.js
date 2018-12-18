@@ -9,6 +9,7 @@ var tweetText = "placeholder";
 var data;
 
 function readTextFile(file, callback) {
+    console.log(file);
     var rawFile = new XMLHttpRequest();
     rawFile.overrideMimeType("application/json");
     rawFile.open("GET", file, true);
