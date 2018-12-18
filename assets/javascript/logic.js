@@ -17,6 +17,7 @@ function readTextFile(file, callback) {
             callback(rawFile.responseText);
         }
     }
+    console.log(rawFile);
 }
 
 //usage:
@@ -32,6 +33,13 @@ readTextFile("./assets/javascript/master_2018.json", function(text){
 });
 
 console.log(data);
+
+function displayMatch() {
+    var randTweet = [Math.floor(Math.random() * data.length)];
+    var tweetText = randTweet[1];
+    console.log(tweetText);
+}
+displayMatch();
 
 function displayGif(tweetText) {
     var APIkey = "b98xRER1URXt0Nhz68BEVXWnfI43okvO";
