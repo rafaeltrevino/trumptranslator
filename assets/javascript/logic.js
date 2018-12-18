@@ -22,7 +22,7 @@ function readTextFile(file, callback) {
 }
 
 //usage:
-readTextFile("./master_2018.json", function(text){
+readTextFile("https://rafaeltrevino.github.io/trumptranslator/assets/javascript/master_2018.json", function(text){
     data = JSON.parse(text);
     console.log(data);
 
