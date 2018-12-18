@@ -22,10 +22,13 @@ function readTextFile(file, callback) {
 readTextFile("./assets/javascript/master_2018.json", function(text){
     var data = JSON.parse(text);
     console.log(data);
+    console.log(data.length);
 
     for (i=0; i < data.length; i++) {
         var date = data[i].created_at;
+        console.log(date);
         var tweet = data[i].full_text;
+        console.log(tweet);
         tweetArray.push(date, tweet);
     }
     console.log(tweetArray);
