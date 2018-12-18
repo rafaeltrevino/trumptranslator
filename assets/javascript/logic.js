@@ -21,7 +21,7 @@ function readTextFile(file, callback) {
 }
 
 //usage:
-readTextFile("./assets/javascript/master_2018.json", function(text){
+readTextFile("./master_2018.json", function(text){
     data = JSON.parse(text);
     console.log(data);
 
