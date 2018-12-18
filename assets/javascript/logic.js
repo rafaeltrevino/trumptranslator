@@ -22,6 +22,12 @@ function readTextFile(file, callback) {
 readTextFile("./assets/javascript/master_2018.json", function(text){
     var data = JSON.parse(text);
     console.log(data);
+
+    for (i=0; i < data.length; i++) {
+        var date = data[i].created_at;
+        var tweet = data[i].full_text;
+        console.log(date + ": " + tweet);
+    }
 });
 
 function displayGif(tweetText) {
