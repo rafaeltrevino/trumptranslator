@@ -1,10 +1,11 @@
 $(document).ready(function() {
 
-var tweet = "Today I am making good on my promise to defend our Farmers & Ranchers from unjustified trade retaliation by foreign nations. I have authorized Secretary Perdue to implement the 2nd round of Market Facilitation Payments. Our economy is stronger than ever–we stand with our Farmers!"
+
 var images = [];
 var state = $(this).attr("data-state");
 var rowID = -1;
-
+var tweetArray = [];
+var tweetText;
 
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
@@ -16,6 +17,13 @@ function readTextFile(file, callback) {
         }
     }
     rawFile.send(null);
+
+    for (i=0; i < rawFile.length; i++) {
+        var date = rawfile[i].created_at;
+        var tweet = rawfile[i].full_text;
+        tweetArray.push(date, tweet);
+    }
+    console.log(tweetArray);
 }
 
 //usage:
@@ -24,7 +32,7 @@ readTextFile("./assets/javascript/master_2018.json", function(text){
     console.log(data);
 });
 
-function displayGif(tweet) {
+function displayGif(tweetText) {
     var APIkey = "b98xRER1URXt0Nhz68BEVXWnfI43okvO";
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tweet + "&api_key=" + APIkey + "&limit=1"
     console.log(queryURL);
@@ -54,6 +62,6 @@ function displayGif(tweet) {
     });
 }
 
-displayGif(tweet);
+displayGif(tweetText);
 
 }); // End of document ready function
