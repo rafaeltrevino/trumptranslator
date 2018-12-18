@@ -27,27 +27,28 @@ function getTweets() {
         displayGif(tweetText);
     });
 };
-getTweets();
+
 
 console.log(tweetText);
 
 function displayGif(tweetText) {
     var APIkey = "b98xRER1URXt0Nhz68BEVXWnfI43okvO";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tweetText + "&api_key=" + APIkey + "&limit=1"
+    var queryURL = "https://api.giphy.com/v1/gifs/translate?s=" + tweetText + "&api_key=" + APIkey + "&weirdness=1"
     console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET",
     }).then(function(response) {
         console.log(response);
-        for (i=0; i < response.data.length; i++) {
+        console.log(response.data);
+        // for (i=0; i < response.data.length; i++) {
             var gifDivCol = $("<div>").addClass("col-md");
             var p = $("<p>");
             var img = $("<img>");
-            var altText = $(response.data[i].title);
-            var imgSrc = response.data[i].images.fixed_height.url;
-            var imgStill = response.data[i].images.fixed_height_still.url;
-            var imgAnimate = response.data[i].images.fixed_height.url;
+            var altText = $(response.data.title);
+            var imgSrc = response.data.images.fixed_height.url;
+            var imgStill = response.data.images.fixed_height_still.url;
+            var imgAnimate = response.data.images.fixed_height.url;
             img.attr("src", imgSrc).attr("alt", altText);
             img.attr("data-id", response.data.id);
             img.attr("data-still", imgStill);
@@ -56,8 +57,17 @@ function displayGif(tweetText) {
             console.log(p);
             gifDivCol.append(p);
             $("#gifDiv").prepend(gifDivCol);
-        }
+        //}
     });
 }
 
-}); // End of document ready function
+getTweets();
+
+$("#clickTranslate").click(function() {
+    $("#tweetDateDiv").empty();
+    $("#tweetTextDiv").empty();
+    $("#gifDiv").empty();
+    getTweets();
+});
+
+});
