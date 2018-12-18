@@ -6,6 +6,7 @@ var state = $(this).attr("data-state");
 var rowID = -1;
 var tweetArray = [];
 var tweetText = "placeholder";
+var data;
 
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
@@ -20,7 +21,7 @@ function readTextFile(file, callback) {
 
 //usage:
 readTextFile("./assets/javascript/master_2018.json", function(text){
-    var data = JSON.parse(text);
+    data = JSON.parse(text);
     console.log(data);
 
     for (i=0; i < data.length; i++) {
