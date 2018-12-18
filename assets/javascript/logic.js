@@ -5,7 +5,7 @@ var images = [];
 var state = $(this).attr("data-state");
 var rowID = -1;
 var tweetArray = [];
-var tweetText;
+var tweetText = "placeholder";
 
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
@@ -22,21 +22,11 @@ function readTextFile(file, callback) {
 readTextFile("./assets/javascript/master_2018.json", function(text){
     var data = JSON.parse(text);
     console.log(data);
-    console.log(data.length);
-
-    for (i=0; i < data.length; i++) {
-        var date = data[i].created_at;
-        console.log(date);
-        var tweet = data[i].full_text;
-        console.log(tweet);
-        tweetArray.push(date, tweet);
-    }
-    console.log(tweetArray);
 });
 
 function displayGif(tweetText) {
     var APIkey = "b98xRER1URXt0Nhz68BEVXWnfI43okvO";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tweet + "&api_key=" + APIkey + "&limit=1"
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tweetText + "&api_key=" + APIkey + "&limit=1"
     console.log(queryURL);
     $.ajax({
         url: queryURL,
