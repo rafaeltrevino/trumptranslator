@@ -16,21 +16,19 @@ function readTextFile(file, callback) {
             callback(rawFile.responseText);
         }
     }
-    rawFile.send(null);
-    console.log(rawFile);
-
-    for (i=0; i < rawFile.length; i++) {
-        var date = rawfile[i].created_at;
-        var tweet = rawfile[i].full_text;
-        tweetArray.push(date, tweet);
-    }
-    console.log(tweetArray);
 }
 
 //usage:
 readTextFile("./assets/javascript/master_2018.json", function(text){
     var data = JSON.parse(text);
     console.log(data);
+
+    for (i=0; i < data.length; i++) {
+        var date = data[i].created_at;
+        var tweet = data[i].full_text;
+        tweetArray.push(date, tweet);
+    }
+    console.log(tweetArray);
 });
 
 function displayGif(tweetText) {
