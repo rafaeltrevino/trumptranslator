@@ -1,46 +1,38 @@
 $(document).ready(function() {
 
-
-var images = [];
 var state = $(this).attr("data-state");
 var rowID = -1;
 var tweetArray = [];
-var tweetText = "placeholder";
+var tweetText = $
 var data;
 
-function readTextFile(file, callback) {
-    console.log(file);
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
+function getTweets() {
+    var jsonUrl = "https://rafaeltrevino.github.io/trumptranslator/assets/javascript/master_2018.json";
+    $.ajax({
+        url: jsonUrl,
+        method: "GET",
+    }).then(function(data) {
+        console.log(data);
+        console.log(data.length);
+        for (i=0; i < data.length; i++) {
+            var tweetDate = data[i].created_at;
+            var tweet = data[i].text;
+            tweetArray.push([tweetDate, tweet]);
         }
-    }
-    console.log(rawFile);
-}
+        console.log(tweetArray);
+        var d = $("<div>");
+        var p = $("<p>");
+        var randTweet = tweetArray[Math.floor(Math.random() * tweetArray.length)];
+        var tweetDate = randTweet[0];
+        var tweetText = randTweet[1];
+        $("#tweetDateDiv").html(tweetDate);
+        $("#tweetTextDiv").html(tweetText);
+        displayGif(tweetText);
+    });
+};
+getTweets();
 
-//usage:
-readTextFile("https://rafaeltrevino.github.io/trumptranslator/assets/javascript/master_2018.json", function(text){
-    data = JSON.parse(text);
-    console.log(data);
-
-    for (i=0; i < data.length; i++) {
-        var date = data[i].created_at;
-        var tweet = data[i].full_text;
-        console.log(date + ": " + tweet);
-    }
-});
-
-console.log(data);
-
-function displayMatch() {
-    var randTweet = [Math.floor(Math.random() * data.length)];
-    var tweetText = randTweet[1];
-    console.log(tweetText);
-}
-displayMatch();
+console.log(tweetText);
 
 function displayGif(tweetText) {
     var APIkey = "b98xRER1URXt0Nhz68BEVXWnfI43okvO";
@@ -72,6 +64,6 @@ function displayGif(tweetText) {
     });
 }
 
-displayGif(tweetText);
+// displayGif(tweetText);
 
 }); // End of document ready function
