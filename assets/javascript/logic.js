@@ -1,10 +1,7 @@
 $(document).ready(function() {
 
-var state = $(this).attr("data-state");
-var rowID = -1;
 var tweetArray = [];
 var tweetText = $
-var data;
 
 function getTweets() {
     var jsonUrl = "https://rafaeltrevino.github.io/trumptranslator/assets/javascript/master_2018.json";
@@ -58,12 +55,9 @@ function displayGif(tweetText) {
             p.append(img);
             console.log(p);
             gifDivCol.append(p);
-            // images.push(gifDiv);
             $("#gifDiv").prepend(gifDivCol);
         }
     });
 }
-
-// displayGif(tweetText);
 
 }); // End of document ready function
