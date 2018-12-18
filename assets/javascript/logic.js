@@ -17,6 +17,7 @@ function readTextFile(file, callback) {
         }
     }
     rawFile.send(null);
+    console.log(rawFile);
 
     for (i=0; i < rawFile.length; i++) {
         var date = rawfile[i].created_at;
