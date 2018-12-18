@@ -31,6 +31,8 @@ readTextFile("./assets/javascript/master_2018.json", function(text){
     }
 });
 
+console.log(data);
+
 function displayGif(tweetText) {
     var APIkey = "b98xRER1URXt0Nhz68BEVXWnfI43okvO";
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tweetText + "&api_key=" + APIkey + "&limit=1"
