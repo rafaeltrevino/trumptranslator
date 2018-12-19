@@ -51,7 +51,7 @@ function displayGif(tweetText) {
 
 getTweets();
 
-$("#clickTranslate").click(function() {
+$("#clickTranslate").on("click", function() {
     $("#tweetDateDiv").empty();
     $("#tweetTextDiv").empty();
     $("#gifDiv").empty();
